@@ -8,13 +8,21 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "@motionone/dom": "^10.18.0",
+    "@studio-freight/lenis": "^1.0.42",
+    "aos": "^2.3.4",
+    "gsap": "^3.13.0",
+    "imagesloaded": "^5.0.0",
+    "next": "16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "next": "16.0.0"
+    "react-globe.gl": "^2.36.0",
+    "three": "^0.180.0"
   },
   "devDependencies": {
-    "babel-plugin-react-compiler": "1.0.0",
     "@tailwindcss/postcss": "^4",
+    "babel-plugin-react-compiler": "1.0.0",
     "tailwindcss": "^4"
   }
 }
