@@ -100,8 +100,8 @@ td {
   width: 100%;
   height: 140vh;
   background-color: #fff;
-  opacity: 0;
-  z-index: 1;
+  opacity: 0 !important;
+  z-index: -99;
 }
 
 .india {
@@ -124,6 +124,20 @@ td {
   transform: translateY(-2%) !important;
   /* margin-left: 10.65% !important; */
 }
+.indiacase-content-1 {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0;
+  margin-left: 14% !important;
+}
+.indiacase-content-2 {
+  position: absolute !important;
+  top: 30% !important;
+  left: 0;
+  transform: translateY(-2%) !important;
+  /* margin-left: 10.65% !important; */
+}
+
 .case-content {
   height: 100vh !important;
   display: flex;
@@ -141,12 +155,12 @@ td {
     #034766 100%,
     #000 100%
   ); */
-   background: 
-    radial-gradient(circle, #079679 0%, #001f2b 100%, rgba(0, 0, 0, 1) 100%);
+  /* background: 
+    radial-gradient(circle, #079679 0%, #001f2b 100%, rgba(0, 0, 0, 1) 100%); */
   position: relative;
 }
-.main-div .white-overlay {
-  /* z-index: -1; */
+.white-overlay {
+  z-index: -1;
   position: absolute;
   top: 0;
   left: 0;
@@ -157,7 +171,7 @@ td {
 }
 .scene-container {
   height: 760px !important;
-  margin-bottom: 4rem;
+  margin-bottom: 9.25rem;
 }
 /* .main-div {
   position: relative;
@@ -186,6 +200,17 @@ td {
   left: 20%;
   margin-left: -85px;
 }
+.overlay-logo2 {
+  position: absolute;
+  width: 150px;
+  border-radius: 50%;
+  height: 150px;
+  background: #f2f2f2;
+  top: 40%;
+  left: 20%;
+  /* opacity: 50%; */
+  margin-left: -85px;
+}
 .inner-circle {
   display: flex;
   justify-content: center;
@@ -199,6 +224,156 @@ td {
   margin-left: 16px;
   margin-top: 12px;
 }
-.nine{
+.nine {
   letter-spacing: 0.7px;
+}
+/* .bg-img{
+  background-image: url("/images/retention2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+} */
+
+.overlay3 {
+  position: absolute;
+  top: 0;
+  width: 80%;
+  inset: 0;
+  left: 20%;
+  background: linear-gradient(
+    to bottom,
+    rgba(1, 43, 50, 0.8),
+    rgba(0, 77, 64, 0.8)
+  );
+  z-index: 1;
+}
+
+.newIndia {
+  position: relative;
+  height: 100vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  overflow: hidden;
+}
+
+/* Background Video */
+.newIndia video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Gradient Overlay */
+.newIndia .overlay2 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(1, 43, 50, 0.8),
+    rgba(0, 77, 64, 0.8)
+  );
+  z-index: 1;
+}
+
+/* Text Content */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.content p {
+  color: #9be1a5;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.content h2 {
+  font-size: 2rem;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.content .number {
+  font-size: 6rem;
+  font-weight: 800;
+}
+
+.content .countries {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.country-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #d1d5db;
+}
+
+.country-list div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+@media (max-width: 768px) {
+  .content h2 {
+    font-size: 1.6rem;
+  }
+  .content .number {
+    font-size: 4rem;
+  }
+  .content .countries {
+    font-size: 2.5rem;
+  }
+  .country-list {
+    gap: 30px;
+  }
+}
+.test {
+  height: calc(160vw + 340px);
+}
+/* .bg-video {
+  opacity: 1;
+} */
+.tinted-video {
+  opacity: 0.7;
+  mix-blend-mode: soft-light;
+  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 60%,
+    transparent 100%
+  );
+
+  /* mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  ); */
+  filter: brightness(1) saturate(1.2);
 }

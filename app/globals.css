@@ -27,4 +27,7 @@ body {
 	font-family: 'AntaTrial', sans-serif;
 	width: 100%;
 	overflow-x: hidden;
+  /* position: relative; */
+  background: 
+    radial-gradient(circle, #079679 0%, #001f2b 100%, rgba(0, 0, 0, 1) 100%);
 }
