@@ -360,20 +360,36 @@ td {
     black 60%,
     transparent 100%
   );
-
-  /* mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 20%,
-    black 80%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 20%,
-    black 80%,
-    transparent 100%
-  ); */
   filter: brightness(1) saturate(1.2);
+}
+
+/* 
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+} */
+
+/* The gradient overlay that merges the video with your page bg */
+/* .video-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%; 
+  background: linear-gradient(to bottom, transparent, #001f2b);
+  pointer-events: none;
+  z-index: 3;
+}*/
+.tinted-video3 {
+  opacity: 0.7;
+  mix-blend-mode: overlay;
+  filter: brightness(0.7) saturate(1.2);
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }

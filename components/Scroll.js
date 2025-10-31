@@ -30,7 +30,8 @@ export default function Scroll() {
         scrub: true,
         pin: true,
         anticipatePin: 1,
-        // markers: true,
+        immediateRender: false,
+        markers: true,
       },
     });
 
@@ -42,7 +43,10 @@ export default function Scroll() {
   }, []);
 
   return (
-    <section ref={triggerRef} className="relative h-[100vh] overflow-hidden  ">
+    <section
+      ref={triggerRef}
+      className="relative h-[100vh] overflow-hidden z-[10] "
+    >
       <div
         ref={sectionRef}
         className="flex space-x-10 h-full w-max items-center px-[5rem]"

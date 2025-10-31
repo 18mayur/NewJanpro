@@ -13,6 +13,11 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false);
   const sectionRef = useRef(null);
+  const section2Ref = useRef(null);
+  const textsRef = useRef([]);
+  const rightImgRef = useRef(null);
+  const indiaStoryInnerRef2 = useRef(null);
+
   const indiaSectionRef = useRef(null);
   const titleRef = useRef(null);
   const content1Ref = useRef(null);
@@ -413,23 +418,6 @@ export default function Page() {
     //   });
     // }
 
-    // if (videoInnerRef.current) {
-    //   gsap.to(videoInnerRef.current, {
-    //     x: 300, // moves back to right
-    //     opacity: 0, // fades out completely; change to 0.5 if you want it partially visible
-    //     ease: "power2.inOut",
-    //     scrollTrigger: {
-    //       trigger: "#title-2",
-    //       start: "center center", // when title 2 reaches center of viewport
-    //       end: "bottom center",
-    //       scrub: true,
-    //       toggleActions: "play none none reverse",
-    //       // markers: true,
-    //     },
-    //   });
-    // }
-    // --- slide-in for inner video (animate inner wrapper, not sticky parent) ---
-
     // Cleanup
     return () => {
       // destroy Lenis properly
@@ -444,10 +432,92 @@ export default function Page() {
       tl.kill();
     };
   }, []);
+  // useEffect(() => {
+  //   if (!section2Ref.current || !indiaStoryInnerRef.current) return;
 
+  //   const ctx = gsap.context(() => {
+  //     // --- VIDEO FADE-IN (from right) ---
+  //     gsap.fromTo(
+  //       indiaStoryInnerRef.current,
+  //       { x: 80, autoAlpha: 0 },
+  //       {
+  //         x: 0,
+  //         autoAlpha: 1,
+  //         ease: "power2.out",
+  //         scrollTrigger: {
+  //           trigger: section2Ref.current,
+  //           start: "top 70%",
+  //           end: "top top",
+  //           scrub: true,
+  //           immediateRender: false,
+  //           invalidateOnRefresh: true,
+  //         },
+  //       }
+  //     );
+
+  //     // --- MASTER TIMELINE (pin + text animation) ---
+  //     const tl = gsap.timeline({
+  //       scrollTrigger: {
+  //         trigger: section2Ref.current,
+  //         start: "top top",
+  //         end: "+=350%",
+  //         scrub: true,
+  //         pin: true,
+  //         invalidateOnRefresh: true,
+  //       },
+  //     });
+
+  //     // Text sequence
+  //     tl.fromTo(
+  //       textsRef.current[0],
+  //       { opacity: 1, y: 0 },
+  //       { opacity: 0, y: -220, duration: 1.2 },
+  //       0.15
+  //     );
+  //     tl.fromTo(
+  //       textsRef.current[1],
+  //       { opacity: 0, y: 220 },
+  //       { opacity: 1, y: 0, duration: 1.2 },
+  //       ">0.25"
+  //     );
+  //     tl.to(
+  //       textsRef.current[1],
+  //       { opacity: 0, y: -220, duration: 1.1 },
+  //       ">1.0"
+  //     );
+  //     tl.fromTo(
+  //       textsRef.current[2],
+  //       { opacity: 0, y: 220 },
+  //       { opacity: 1, y: 0, duration: 1.2 },
+  //       ">0.25"
+  //     );
+
+  //     // --- VIDEO FADE-OUT (move back right + fade out) ---
+  //     gsap.fromTo(
+  //       indiaStoryInnerRef.current,
+  //       { x: 0, autoAlpha: 1 },
+  //       {
+  //         x: 100,
+  //         autoAlpha: 0,
+  //         ease: "power2.inOut",
+  //         scrollTrigger: {
+  //           trigger: section2Ref.current,
+  //           start: "bottom 80%", // starts fade-out when section is near leaving
+  //           end: "bottom 30%", // completes fade-out a bit before section fully exits
+  //           scrub: 0.6,
+  //           immediateRender: false,
+  //           invalidateOnRefresh: true,
+  //           // markers: true,
+  //         },
+  //       }
+  //     );
+  //   }, section2Ref);
+
+  //   return () => ctx.revert();
+  // }, []);
   return (
     <>
-      <header className="sticky top-0 z-50 bg-transparent pt-[1.25rem] w-full">
+      <header className="fixed top-0 z-50 bg-transparent pt-[1.25rem] w-full">
         <div className="mx-[6rem] flex justify-between items-center w-full">
           <div className="logo">
             <a href="#">
@@ -484,8 +554,59 @@ export default function Page() {
         {/* overlay div  */}
         <div className="white-overlay"></div>
         {/* 1st section  */}
-        <div className="flex bg-1 w-full">
-          <div className="flex !h-[80vh] z-10  flex-col w-[45%] ml-24 h-full justify-center items-start ">
+        <div className="flex bg-1 h-[100vh] w-full relative">
+          <div className="absolute z-10">
+            <video
+              autoPlay
+              muted
+              playsInline
+              loop
+              className="w-[100%] h-full object-cover tinted-video3"
+            >
+              <source src="/images/3d-globe2.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div className="flex !h-[100vh] z-10  flex-col w-[45%] ml-24 h-full justify-center items-start ">
+            <div className="flex flex-col">
+              <h4 className="text-[#78bf21] font-bold mb-3">GLOBAL STORY</h4>
+              <h2 className="text-[1.75rem] leading-9 font-bold text-[#fff] z-[999] text-left">
+                Across Borders, Varying Cultures,
+                <br />
+                Diverse Shifts — Standardized Workflow.
+              </h2>
+            </div>
+            <div className="flex flex-col">
+              <h1 className="text-[6.5rem] text-[#fff] font-bold">
+                11+
+                <span className="text-[#dbdbdbd1] pl-[0.5rem] !text-[4rem]">
+                  Countries
+                </span>
+              </h1>
+              <table className="text-[#e0e3e6]">
+                <tbody>
+                  <tr>
+                    <td>Canada</td>
+                    <td>USA</td>
+                    <td>Mexico</td>
+                    <td>United Kingdom</td>
+                  </tr>
+                  <tr>
+                    <td>Australia</td>
+                    <td>Brazil</td>
+                    <td>Nigeria</td>
+                    <td>Saudi Arabia</td>
+                  </tr>
+                  <tr>
+                    <td>India</td>
+                    <td>Puerto Rico</td>
+                    <td>New Zealand</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          {/*
+           <div className="flex !h-[80vh] z-10  flex-col w-[45%] ml-24 h-full justify-center items-start ">
             <div className="flex flex-col">
               <h4 className="text-[#78bf21] font-bold mb-3">GLOBAL STORY</h4>
               <h2 className="text-[1.75rem] leading-9 font-bold text-[#fff] z-[999] text-left">
@@ -526,7 +647,7 @@ export default function Page() {
           </div>
           <div className=" -z-10 flex w-[60%] justify-center h-[100vh] ml-[5rem] items-end">
             <NewMarqueeGlobe2 />
-          </div>
+          </div> */}
         </div>
 
         {/* title div */}
@@ -535,7 +656,7 @@ export default function Page() {
           id="title-1"
           data-aos="fade-up"
           data-aos-duration="3000"
-          className="h-[250px] title-div mt-[2.75rem] mb-[3.5rem] w-full flex justify-center items-center"
+          className="h-[250px] title-div mt-[11.5rem] mb-[3rem] w-full flex justify-center items-center"
         >
           <h1 className="text-white text-center font-bold text-[4rem] leading-[4.5rem]">
             Connecting the World Through Trust,
@@ -544,11 +665,11 @@ export default function Page() {
         </div>
 
         {/* Video + Content section */}
+
         <section
           ref={sectionRef}
           className="flex relative h-[140vh] overflow-hidden"
         >
-          {/* Left (text) */}
           <div className="w-[50%] min-h-screen flex flex-col justify-center px-[3rem] relative text-white">
             <div
               ref={content1Ref}
@@ -582,13 +703,7 @@ export default function Page() {
                 Strengthening Our Growth Story
                 <br /> Through Long-Term Relationships
               </h2>
-              {/* <img
-                src="/images/retention2.png"
-                alt="retention"
-                width={400}
-                height={160}
-              /> */}
-              {/* <div className="bg-img h-[140px]" ></div> */}
+
               <h1 className="text-[10rem] mb-[0.75rem] font-extrabold nine leading-[11rem]">
                 96%
               </h1>
@@ -598,7 +713,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Right (pinned video) */}
           <div
             ref={videoWrapperRef}
             className="w-[50%] sticky fade-mask top-0 h-screen flex justify-end items-end z-10"
@@ -607,13 +721,6 @@ export default function Page() {
               className="video-inner relative flex justify-end"
               ref={videoInnerRef}
             >
-              {/* <div className="overlay-logo">
-                <div className="inner-circle">
-                  <span className="text-">
-                    <img src="/images/Customer.png" alt="customer" width={94} />
-                  </span>
-                </div>
-              </div> */}
               <video
                 autoPlay
                 muted
